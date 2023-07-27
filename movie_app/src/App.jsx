@@ -11,6 +11,7 @@ function App() {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
     setAllMovies(data.Search);
+    console.log(data);
   };
 
   useEffect(() => {
@@ -35,7 +36,7 @@ function App() {
       {allMovies?.length > 0 ? (
         <div className="container">
           {allMovies.map((movie) => (
-            <MovieCard movie={movie} />
+            <MovieCard movie={movie} key={movie.imdbID} />
           ))}
         </div>
       ) : (
